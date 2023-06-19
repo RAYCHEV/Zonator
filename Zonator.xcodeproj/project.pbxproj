@@ -13,6 +13,7 @@
 		246E2F5C2A3F03D600976F73 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 246E2F5B2A3F03D600976F73 /* Preview Assets.xcassets */; };
 		246E2F5E2A3F03D600976F73 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246E2F5D2A3F03D600976F73 /* Persistence.swift */; };
 		246E2F612A3F03D600976F73 /* Zonator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 246E2F5F2A3F03D600976F73 /* Zonator.xcdatamodeld */; };
+		246E2F692A3F64FE00976F73 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246E2F682A3F64FE00976F73 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		246E2F5D2A3F03D600976F73 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		246E2F602A3F03D600976F73 /* Zonator.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Zonator.xcdatamodel; sourceTree = "<group>"; };
 		246E2F622A3F03D600976F73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		246E2F682A3F64FE00976F73 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				246E2F542A3F03D600976F73 /* ZonatorApp.swift */,
 				246E2F562A3F03D600976F73 /* ContentView.swift */,
+				246E2F682A3F64FE00976F73 /* MainView.swift */,
 				246E2F582A3F03D600976F73 /* Assets.xcassets */,
 				246E2F5D2A3F03D600976F73 /* Persistence.swift */,
 				246E2F622A3F03D600976F73 /* Info.plist */,
@@ -148,6 +151,7 @@
 				246E2F5E2A3F03D600976F73 /* Persistence.swift in Sources */,
 				246E2F612A3F03D600976F73 /* Zonator.xcdatamodeld in Sources */,
 				246E2F572A3F03D600976F73 /* ContentView.swift in Sources */,
+				246E2F692A3F64FE00976F73 /* MainView.swift in Sources */,
 				246E2F552A3F03D600976F73 /* ZonatorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
