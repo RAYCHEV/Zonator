@@ -34,24 +34,32 @@ struct MainView: View {
                 Label("Proteins", systemImage: "p.square.fill")
                 TextField("0.0", text: $protein)
                     .focused($focusedField, equals: .proteins)
+                    .modifier(FloatInputModifier())
+                Text("gr. per 100gr.")
             }
             
             GridRow(alignment: .firstTextBaseline) {
                 Label("Carbs", systemImage: "c.square.fill")
                 TextField("0.0", text: $carbs)
                     .focused($focusedField, equals: .carbs)
+                    .modifier(FloatInputModifier())
+                Text("gr. per 100gr.")
             }
             
             GridRow(alignment: .firstTextBaseline) {
                 Label("Fats", systemImage: "f.square.fill")
                 TextField("0.0", text: $fats)
                     .focused($focusedField, equals: .fats)
+                    .modifier(FloatInputModifier())
+                Text("gr. per 100gr.")
             }
             
             GridRow(alignment: .firstTextBaseline) {
                 Label("Fibres", systemImage: "f.cursive.circle")
                 TextField("0.0", text: $fibers)
                     .focused($focusedField, equals: .fibres)
+                    .modifier(FloatInputModifier())
+                Text("gr. per 100gr.")
             }
             GridRow() {
                 Button("Clear"){
@@ -116,7 +124,6 @@ struct MainView: View {
             focusedField = .proteins
         }
         .padding()
-        .modifier(FloatInputModifier())
         .onTapGesture {
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }}
@@ -133,7 +140,9 @@ struct MainView_Previews: PreviewProvider {
 struct FloatInputModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
+            .frame(width: 56)
             .keyboardType(.decimalPad)
             .textFieldStyle(RoundedBorderTextFieldStyle())
+            .fixedSize(horizontal: true, vertical: false)
     }
 }
