@@ -67,6 +67,7 @@ struct MainView: View {
                     carbs = ""
                     fats = ""
                     fibers = ""
+                    totalTitle = ""
                 }
                 Button("Next"){
                     switch focusedField {
