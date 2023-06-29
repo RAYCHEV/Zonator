@@ -71,18 +71,7 @@ struct MainView: View {
                     self.warning = ""
                 }
                 Button("Next"){
-                    switch focusedField {
-                    case .none:
-                        focusedField = .proteins
-                    case .proteins:
-                        focusedField = .carbs
-                    case .carbs:
-                        focusedField = .fats
-                    case .fats:
-                        focusedField = .fibres
-                    case .fibres:
-                        focusedField = .proteins
-                    }
+                    nextFocus()
                 }
                 Button("Submit"){
                     self.totalTitle = calculation()
@@ -99,6 +88,21 @@ struct MainView: View {
         }
         
         
+        }
+    }
+    
+    private func nextFocus() {
+        switch focusedField {
+        case .none:
+            focusedField = .proteins
+        case .proteins:
+            focusedField = .carbs
+        case .carbs:
+            focusedField = .fats
+        case .fats:
+            focusedField = .fibres
+        case .fibres:
+            focusedField = .proteins
         }
     }
     
