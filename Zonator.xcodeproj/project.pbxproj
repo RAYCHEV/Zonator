@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		243E03DF2A5210EE00D22EAB /* Nitrient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243E03DE2A5210EE00D22EAB /* Nitrient.swift */; };
 		246E2F552A3F03D600976F73 /* ZonatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246E2F542A3F03D600976F73 /* ZonatorApp.swift */; };
 		246E2F572A3F03D600976F73 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246E2F562A3F03D600976F73 /* ContentView.swift */; };
 		246E2F592A3F03D600976F73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 246E2F582A3F03D600976F73 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		243E03DE2A5210EE00D22EAB /* Nitrient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nitrient.swift; sourceTree = "<group>"; };
 		246E2F512A3F03D600976F73 /* Zonator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zonator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		246E2F542A3F03D600976F73 /* ZonatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZonatorApp.swift; sourceTree = "<group>"; };
 		246E2F562A3F03D600976F73 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -39,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		243E03DD2A5210AD00D22EAB /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				243E03DE2A5210EE00D22EAB /* Nitrient.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		246E2F482A3F03D600976F73 = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +71,7 @@
 				246E2F542A3F03D600976F73 /* ZonatorApp.swift */,
 				246E2F562A3F03D600976F73 /* ContentView.swift */,
 				246E2F682A3F64FE00976F73 /* MainView.swift */,
+				243E03DD2A5210AD00D22EAB /* Entities */,
 				246E2F582A3F03D600976F73 /* Assets.xcassets */,
 				246E2F5D2A3F03D600976F73 /* Persistence.swift */,
 				246E2F622A3F03D600976F73 /* Info.plist */,
@@ -150,6 +161,7 @@
 			files = (
 				246E2F5E2A3F03D600976F73 /* Persistence.swift in Sources */,
 				246E2F612A3F03D600976F73 /* Zonator.xcdatamodeld in Sources */,
+				243E03DF2A5210EE00D22EAB /* Nitrient.swift in Sources */,
 				246E2F572A3F03D600976F73 /* ContentView.swift in Sources */,
 				246E2F692A3F64FE00976F73 /* MainView.swift in Sources */,
 				246E2F552A3F03D600976F73 /* ZonatorApp.swift in Sources */,
