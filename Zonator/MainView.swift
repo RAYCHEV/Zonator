@@ -108,10 +108,10 @@ struct MainView: View {
     
     private func calculation() -> String {
         //*per100 in grams
-        var protPer100 = 100.0/(Float(self.protein) ?? 0)
-        var carbPer100 = 100.0/(Float(self.carbs) ?? 0)
-        var fatPer100 = 100.0/(Float(self.fats) ?? 0)
-        let fibrePer100 = 100.0/(Float(self.fibers) ?? 0)
+        var protPer100 =    100.0/(Float(self.protein)  ?? 0)
+        var carbPer100 =    100.0/(Float(self.carbs)    ?? 0)
+        var fatPer100 =     100.0/(Float(self.fats)     ?? 0)
+        let fibrePer100 =   100.0/(Float(self.fibers)   ?? 0)
 //
 //                    if protPer100.isInfinite {protPer100 = 0}
 //                    if carbPer100.isInfinite {carbPer100 = 0}
@@ -126,22 +126,22 @@ struct MainView: View {
         fatPer100 *= 1.5
                
         
-        if protPer100 < carbPer100 {
-            if protPer100 < fatPer100{
-                //prot
-                return "PROTEINS\n\n \(protPer100) gr. per block"
-            } else {
-                //fat
-                return "FATS\n\n \(fatPer100) gr. per block"
-            }
-        } else if carbPer100 < fatPer100 {
-            if carbPer100 < protPer100 {
-                // carb
-                return "CARBS\n\n \(carbPer100) gr. per block"
-            }
-        }
-        //self.totalTitle += ("Proteins:\(protPer100) for block.\nCarbs:\(carbPer100) for block.\nFats\(fatPer100) for block")
-        return "Error"
+//        if protPer100 < carbPer100 {
+//            if protPer100 < fatPer100{
+//                //prot
+//                return "PROTEINS\n\n \(protPer100) gr. per block"
+//            } else {
+//                //fat
+//                return "FATS\n\n \(fatPer100) gr. per block"
+//            }
+//        } else if carbPer100 < fatPer100 {
+//            if carbPer100 < protPer100 {
+//                // carb
+//                return "CARBS\n\n \(carbPer100) gr. per block"
+//            }
+//        }
+        self.totalTitle += ("Proteins: \(protPer100) for block.\nCarbs: \(carbPer100) for block.\nFats \(fatPer100) for block")
+        return totalTitle
     }
     
     private func clearValues() {
