@@ -111,12 +111,12 @@ struct MainView: View {
         var protPer100 =    100.0/(Float(self.protein)  ?? 0)
         var carbPer100 =    100.0/(Float(self.carbs)    ?? 0)
         var fatPer100 =     100.0/(Float(self.fats)     ?? 0)
-        let fibrePer100 =   100.0/(Float(self.fibers)   ?? 0)
+        var fibrePer100 =   100.0/(Float(self.fibers)   ?? 0)
 //
-//                    if protPer100.isInfinite {protPer100 = 0}
-//                    if carbPer100.isInfinite {carbPer100 = 0}
-//                    if fatPer100.isInfinite {fatPer100 = 0}
-//                    if fibrePer100.isInfinite {fibrePer100 = 0}
+                    if protPer100.isInfinite {protPer100 = 0}
+                    if carbPer100.isInfinite {carbPer100 = 0}
+                    if fatPer100.isInfinite {fatPer100 = 0}
+                    if fibrePer100.isInfinite {fibrePer100 = 0}
         
         //*per100 grams for block
         
@@ -148,7 +148,7 @@ struct MainView: View {
 //                return "CARBS\n\n \(carbPer100) gr. per block"
 //            }
 //        }
-        self.totalTitle = ("Proteins: \(protPer100) for block.\nCarbs: \(carbPer100) for block.\nFats \(fatPer100) for block")
+        self.totalTitle = ("Proteins: \(protPer100)gr. for block.\nCarbs: \(carbPer100)gr. for block.\nFats \(fatPer100)gr. for block")
         return totalTitle
     }
     
