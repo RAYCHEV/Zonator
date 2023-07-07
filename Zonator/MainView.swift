@@ -120,34 +120,12 @@ struct MainView: View {
         
         //*per100 grams for block
         
+        protPer100 *= 7
         
-        if (protPer100 > 0) {
-            protPer100 *= 7
-
-        }
+        carbPer100 = (carbPer100 - fibrePer100) * 9
         
-        if ((carbPer100 > 0) && (carbPer100-fibrePer100) > 0 && fibrePer100 >= 0) {
-            carbPer100 = (carbPer100 - fibrePer100) * 9
-        }
+        fatPer100 *= 1.5
         
-        if (fatPer100 > 0) {
-            fatPer100 *= 1.5
-        }
-        
-//        if protPer100 < carbPer100 {
-//            if protPer100 < fatPer100{
-//                //prot
-//                return "PROTEINS\n\n \(protPer100) gr. per block"
-//            } else {
-//                //fat
-//                return "FATS\n\n \(fatPer100) gr. per block"
-//            }
-//        } else if carbPer100 < fatPer100 {
-//            if carbPer100 < protPer100 {
-//                // carb
-//                return "CARBS\n\n \(carbPer100) gr. per block"
-//            }
-//        }
         self.totalTitle = ("Proteins: \(protPer100)gr. for block.\nCarbs: \(carbPer100)gr. for block.\nFats \(fatPer100)gr. for block")
         return totalTitle
     }
