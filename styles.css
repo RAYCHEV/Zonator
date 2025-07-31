@@ -1,0 +1,442 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #374151;
+    background-color: #f9fafb;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+/* Main content */
+.main-content {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.calculator-card {
+    padding: 1.5rem;
+}
+
+/* Form styles */
+.nutrition-form {
+    margin-bottom: 2rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.form-group input {
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    transition: all 0.2s;
+    background: white;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.calculate-btn {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.calculate-btn:hover {
+    background: #2563eb;
+}
+
+.calculate-btn:active {
+    transform: translateY(1px);
+}
+
+/* Results section */
+.results-section {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.results-section.hidden {
+    display: none;
+}
+
+/* Dominant indicator */
+.dominant-indicator {
+    background: #f3f4f6;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.dominant-indicator.protein {
+    background: #dbeafe;
+    color: #1d4ed8;
+    border: 1px solid #93c5fd;
+}
+
+.dominant-indicator.carbs {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #86efac;
+}
+
+.dominant-indicator.fat {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fcd34d;
+}
+
+/* Results grid */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.result-card {
+    border-radius: 0.5rem;
+    padding: 1rem;
+    border: 1px solid;
+}
+
+.result-card.protein {
+    background: #eff6ff;
+    border-color: #93c5fd;
+}
+
+.result-card.carbs {
+    background: #f0fdf4;
+    border-color: #86efac;
+}
+
+.result-card.fat {
+    background: #fffbeb;
+    border-color: #fcd34d;
+}
+
+.result-header {
+    margin-bottom: 0.75rem;
+}
+
+.result-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.result-card.protein h3 {
+    color: #1d4ed8;
+}
+
+.result-card.carbs h3 {
+    color: #166534;
+}
+
+.result-card.fat h3 {
+    color: #92400e;
+}
+
+.block-rule {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.result-value {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
+.result-value .value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.result-value .unit {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* Analysis section */
+.analysis-section {
+    background: #f9fafb;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e5e7eb;
+}
+
+.analysis-section p {
+    line-height: 1.6;
+}
+
+/* Interactive calculator */
+.interactive-calculator {
+    background: #eff6ff;
+    border: 1px solid #93c5fd;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.interactive-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    color: #1d4ed8;
+    font-size: 0.875rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.grams-input {
+    width: 4rem;
+    height: 1.75rem;
+    text-align: center;
+    font-size: 0.875rem;
+    border: 1px solid #3b82f6;
+    border-radius: 0.25rem;
+    background: white;
+    font-weight: 500;
+}
+
+.grams-input:focus {
+    outline: none;
+    border-color: #1d4ed8;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.blocks-display {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+}
+
+.block-result {
+    text-align: center;
+}
+
+.block-value {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.block-result.protein .block-value {
+    color: #1d4ed8;
+}
+
+.block-result.carbs .block-value {
+    color: #166534;
+}
+
+.block-result.fat .block-value {
+    color: #ea580c;
+}
+
+.block-label {
+    font-size: 0.75rem;
+    color: #6b7280;
+    line-height: 1.2;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+    .container {
+        padding: 1rem 0.5rem;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .interactive-header {
+        font-size: 0.8rem;
+    }
+    
+    .blocks-display {
+        gap: 0.75rem;
+    }
+}
+
+/* Animations */
+.results-section {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.calculate-btn {
+    transition: all 0.2s ease;
+}
+
+.calculate-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+/* Block Charts - Compact Style */
+.block-charts {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.block-charts h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.compact-charts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.compact-chart-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.chart-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #374151;
+    min-width: 60px;
+    text-align: left;
+}
+
+.compact-bar-container {
+    flex: 1;
+    height: 20px;
+    background: #f3f4f6;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.compact-bar {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.8s ease-in-out;
+    position: relative;
+}
+
+.protein-fill {
+    background: #4f88ff;
+}
+
+.carbs-fill {
+    background: #22c55e;
+}
+
+.fat-fill {
+    background: #f59e0b;
+}
+
+.chart-percentage {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+    min-width: 40px;
+    text-align: right;
+}
+
+/* Utility classes */
+.hidden {
+    display: none !important;
+}
+
+.highlight {
+    font-weight: 600;
+    color: inherit;
+}

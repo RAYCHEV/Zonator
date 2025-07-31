@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zone Diet Block Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Zone Diet Block Calculator</h1>
+            <p class="subtitle">Въведете хранителните стойности от етикета на храната, за да изчислите Zone Diet блоковете.</p>
+        </header>
+
+        <main class="main-content">
+            <div class="calculator-card">
+                <form id="nutrition-form" class="nutrition-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="protein">Протеини (g/100g)</label>
+                            <input type="number" id="protein" name="protein" step="0.1" min="0" placeholder="0">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="carbs">Въглехидрати (g/100g)</label>
+                            <input type="number" id="carbs" name="carbs" step="0.1" min="0" placeholder="0">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fibers">Фибри (g/100g)</label>
+                            <input type="number" id="fibers" name="fibers" step="0.1" min="0" placeholder="0">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fat">Мазнини (g/100g)</label>
+                            <input type="number" id="fat" name="fat" step="0.1" min="0" placeholder="0">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="calculate-btn">Изчисли Zone Блокове</button>
+                </form>
+
+                <div id="results" class="results-section hidden">
+                    <div id="dominant-indicator" class="dominant-indicator"></div>
+                    
+
+                    
+                    <div id="analysis" class="analysis-section">
+                        <p id="analysis-text"></p>
+                    </div>
+                    
+                    <div id="block-charts" class="block-charts hidden">
+                        <h3>Block Composition</h3>
+                        <div class="compact-charts">
+                            <div class="compact-chart-row">
+                                <span class="chart-label">Protein:</span>
+                                <div class="compact-bar-container">
+                                    <div id="protein-bar" class="compact-bar protein-fill" style="width: 0%"></div>
+                                </div>
+                                <span id="protein-ratio" class="chart-percentage">0%</span>
+                            </div>
+                            
+                            <div class="compact-chart-row">
+                                <span class="chart-label">Carbs:</span>
+                                <div class="compact-bar-container">
+                                    <div id="carbs-bar" class="compact-bar carbs-fill" style="width: 0%"></div>
+                                </div>
+                                <span id="carbs-ratio" class="chart-percentage">0%</span>
+                            </div>
+                            
+                            <div class="compact-chart-row">
+                                <span class="chart-label">Fat:</span>
+                                <div class="compact-bar-container">
+                                    <div id="fat-bar" class="compact-bar fat-fill" style="width: 0%"></div>
+                                </div>
+                                <span id="fat-ratio" class="chart-percentage">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="interactive-calculator">
+                        <div class="interactive-header">
+                            <span>Общо блокове в</span>
+                            <input type="number" id="product-grams" value="100" min="1" step="1" class="grams-input">
+                            <span>g продукт</span>
+                        </div>
+                        <div class="blocks-display">
+                            <div class="block-result protein">
+                                <div id="protein-blocks" class="block-value">0.0</div>
+                                <div class="block-label">Протеинови блокове</div>
+                            </div>
+                            <div class="block-result carbs">
+                                <div id="carb-blocks" class="block-value">0.0</div>
+                                <div class="block-label">Въглехидратни блокове</div>
+                            </div>
+                            <div class="block-result fat">
+                                <div id="fat-blocks" class="block-value">0.0</div>
+                                <div class="block-label">Мазнинни блокове</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
