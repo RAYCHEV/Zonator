@@ -1,5 +1,88 @@
 // Zone Diet Calculator JavaScript
 
+// Translation system
+const translations = {
+    en: {
+        title: 'Zone Diet Block Calculator',
+        subtitle: 'Enter the nutritional values from the food label to calculate Zone Diet blocks.',
+        'label.protein': 'Protein (g/100g)',
+        'label.carbs': 'Carbohydrates (g/100g)',
+        'label.fibers': 'Fiber (g/100g)',
+        'label.fat': 'Fat (g/100g)',
+        'button.calculate': 'Calculate Zone Blocks',
+        blockComposition: 'Block Composition',
+        'chart.protein': 'Protein:',
+        'chart.carbs': 'Carbs:',
+        'chart.fat': 'Fat:',
+        'interactive.totalBlocks': 'Total blocks in',
+        'interactive.gProduct': 'g product',
+        'blocks.protein': 'Protein blocks',
+        'blocks.carbs': 'Carb blocks',
+        'blocks.fat': 'Fat blocks',
+        'dominant.none': 'Please enter at least one nutritional value to see the results.',
+        'dominant.protein': 'This product is primarily a protein source',
+        'dominant.carbs': 'This product is primarily a carbohydrate source',
+        'dominant.fat': 'This product is primarily a fat source',
+        'dominant.forOneBlock': 'for 1 block',
+        'analysis.primarily': 'This product is primarily a',
+        'analysis.source': 'source.',
+        'analysis.oneBlock': 'One',
+        'analysis.blockEquals': 'block equals',
+        'analysis.ofProduct': 'of this product.',
+        'analysis.inAmount': 'In',
+        'analysis.youWillAlsoGet': 'of this product you will also get:',
+        'analysis.proteinBlocks': 'protein blocks',
+        'analysis.carbBlocks': 'carb blocks',
+        'analysis.fatBlocks': 'fat blocks',
+        'analysis.negligible': 'negligible amounts of other macronutrients.',
+        'nutrient.protein': 'protein',
+        'nutrient.carbs': 'carbohydrate',
+        'nutrient.fat': 'fat',
+        'kofi.text': 'Message Us'
+    },
+    bg: {
+        title: 'Zone Diet Block Calculator',
+        subtitle: 'Въведете хранителните стойности от етикета на храната, за да изчислите Zone Diet блоковете.',
+        'label.protein': 'Протеини (g/100g)',
+        'label.carbs': 'Въглехидрати (g/100g)',
+        'label.fibers': 'Фибри (g/100g)',
+        'label.fat': 'Мазнини (g/100g)',
+        'button.calculate': 'Изчисли Zone Блокове',
+        blockComposition: 'Block Composition',
+        'chart.protein': 'Protein:',
+        'chart.carbs': 'Carbs:',
+        'chart.fat': 'Fat:',
+        'interactive.totalBlocks': 'Общо блокове в',
+        'interactive.gProduct': 'g продукт',
+        'blocks.protein': 'Протеинови блокове',
+        'blocks.carbs': 'Въглехидратни блокове',
+        'blocks.fat': 'Мазнинни блокове',
+        'dominant.none': 'Моля, въведете поне една хранителна стойност за да видите резултатите.',
+        'dominant.protein': 'Този продукт е основно протеинов източник',
+        'dominant.carbs': 'Този продукт е основно въглехидратен източник',
+        'dominant.fat': 'Този продукт е основно мазнинен източник',
+        'dominant.forOneBlock': 'за 1 блок',
+        'analysis.primarily': 'Този продукт е основно',
+        'analysis.source': 'източник.',
+        'analysis.oneBlock': 'Един',
+        'analysis.blockEquals': 'блок се равнява на',
+        'analysis.ofProduct': 'от този продукт.',
+        'analysis.inAmount': 'В',
+        'analysis.youWillAlsoGet': 'от този продукт ще получите също:',
+        'analysis.proteinBlocks': 'протеинови блока',
+        'analysis.carbBlocks': 'въглехидратни блока',
+        'analysis.fatBlocks': 'мазнинни блока',
+        'analysis.negligible': 'незначителни количества от други макронутриенти.',
+        'nutrient.protein': 'протеинов',
+        'nutrient.carbs': 'въглехидратен',
+        'nutrient.fat': 'мазнинен',
+        'kofi.text': 'Пиши ни'
+    }
+};
+
+// Current language
+let currentLanguage = 'bg';
+
 // Zone Diet constants
 const PROTEIN_PER_BLOCK = 7;
 const CARBS_PER_BLOCK = 9;
@@ -38,8 +121,88 @@ const carbsInput = document.getElementById('carbs');
 const fibersInput = document.getElementById('fibers');
 const fatInput = document.getElementById('fat');
 
+// Translation helper function
+function t(key) {
+    return translations[currentLanguage][key] || key;
+}
+
+// Update page text based on current language
+function updatePageText() {
+    // Update all elements with data-i18n attribute
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        element.textContent = t(key);
+    });
+    
+    // Update HTML lang attribute
+    document.documentElement.lang = currentLanguage;
+    
+    // Update Ko-fi widget text
+    if (window.kofiWidgetOverlay) {
+        kofiWidgetOverlay.draw('thexcoder', {
+            'type': 'floating-chat',
+            'floating-chat.donateButton.text': t('kofi.text'),
+            'floating-chat.donateButton.background-color': '#00b9fe',
+            'floating-chat.donateButton.text-color': '#fff'
+        });
+    }
+    
+    // Re-render results if they exist
+    if (currentResult) {
+        displayResults();
+    }
+}
+
+// Detect user language preference
+function detectLanguage() {
+    // Check localStorage first
+    const savedLanguage = localStorage.getItem('zoneCalculatorLanguage');
+    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'bg')) {
+        return savedLanguage;
+    }
+    
+    // Check browser language/location
+    const userLang = navigator.language || navigator.userLanguage;
+    
+    // If browser language is Bulgarian, use Bulgarian
+    if (userLang && userLang.toLowerCase().startsWith('bg')) {
+        return 'bg';
+    }
+    
+    // Default to English for all other cases
+    return 'en';
+}
+
+// Set language
+function setLanguage(lang) {
+    currentLanguage = lang;
+    localStorage.setItem('zoneCalculatorLanguage', lang);
+    
+    // Update button states
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.lang === lang) {
+            btn.classList.add('active');
+        }
+    });
+    
+    // Update page text
+    updatePageText();
+}
+
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize language
+    const detectedLanguage = detectLanguage();
+    setLanguage(detectedLanguage);
+    
+    // Add language button event listeners
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            setLanguage(btn.dataset.lang);
+        });
+    });
+    
     // Add form submit event listener
     form.addEventListener('submit', handleFormSubmit);
     
@@ -179,20 +342,15 @@ function updateDominantIndicator(dominant, dominantGrams) {
     dominantIndicator.className = 'dominant-indicator';
     
     if (dominant === 'none') {
-        dominantIndicator.textContent = 'Моля, въведете поне една хранителна стойност за да видите резултатите.';
+        dominantIndicator.textContent = t('dominant.none');
         return;
     }
     
     // Add dominant class
     dominantIndicator.classList.add(dominant);
     
-    const dominantNames = {
-        'protein': 'протеинов',
-        'carbs': 'въглехидратен', 
-        'fat': 'мазнинен'
-    };
-    
-    dominantIndicator.textContent = `Този продукт е основно ${dominantNames[dominant]} източник - ${dominantGrams.toFixed(1)}g за 1 блок`;
+    const dominantText = t(`dominant.${dominant}`);
+    dominantIndicator.textContent = `${dominantText} - ${dominantGrams.toFixed(1)}g ${t('dominant.forOneBlock')}`;
 }
 
 // Update analysis text
@@ -202,15 +360,11 @@ function updateAnalysis() {
     const { dominant, dominantGrams, protein, netCarbs, fat } = currentResult;
     
     if (dominant === 'none') {
-        analysisText.innerHTML = 'Моля, въведете поне една хранителна стойност за да видите резултатите.';
+        analysisText.innerHTML = t('dominant.none');
         return;
     }
     
-    const dominantNames = {
-        'protein': 'протеинов',
-        'carbs': 'въглехидратен',
-        'fat': 'мазнинен'
-    };
+    const nutrientName = t(`nutrient.${dominant}`);
     
     const dominantColors = {
         'protein': 'color: #1d4ed8; font-weight: 600;',
@@ -218,9 +372,9 @@ function updateAnalysis() {
         'fat': 'color: #92400e; font-weight: 600;'
     };
     
-    let message = `Този продукт е основно <span style="${dominantColors[dominant]}">${dominantNames[dominant]}</span> източник. `;
-    message += `Един ${dominantNames[dominant]} блок се равнява на <span class="highlight">${dominantGrams.toFixed(1)}g</span> от този продукт. `;
-    message += `В ${dominantGrams.toFixed(1)}g от този продукт ще получите също:`;
+    let message = `${t('analysis.primarily')} <span style="${dominantColors[dominant]}">${nutrientName}</span> ${t('analysis.source')} `;
+    message += `${t('analysis.oneBlock')} ${nutrientName} ${t('analysis.blockEquals')} <span class="highlight">${dominantGrams.toFixed(1)}g</span> ${t('analysis.ofProduct')} `;
+    message += `${t('analysis.inAmount')} ${dominantGrams.toFixed(1)}g ${t('analysis.youWillAlsoGet')}`;
     
     // Calculate blocks for the dominant amount
     const dominantAmount = dominantGrams;
@@ -231,21 +385,21 @@ function updateAnalysis() {
     const additionalBlocks = [];
     
     if (dominant !== 'protein' && proteinBlocks > 0.1) {
-        additionalBlocks.push(`<span class="highlight">${proteinBlocks.toFixed(1)}</span> протеинови блока`);
+        additionalBlocks.push(`<span class="highlight">${proteinBlocks.toFixed(1)}</span> ${t('analysis.proteinBlocks')}`);
     }
     
     if (dominant !== 'carbs' && carbsBlocks > 0.1) {
-        additionalBlocks.push(`<span class="highlight">${carbsBlocks.toFixed(1)}</span> въглехидратни блока`);
+        additionalBlocks.push(`<span class="highlight">${carbsBlocks.toFixed(1)}</span> ${t('analysis.carbBlocks')}`);
     }
     
     if (dominant !== 'fat' && fatBlocks > 0.1) {
-        additionalBlocks.push(`<span class="highlight">${fatBlocks.toFixed(1)}</span> мазнинни блока`);
+        additionalBlocks.push(`<span class="highlight">${fatBlocks.toFixed(1)}</span> ${t('analysis.fatBlocks')}`);
     }
     
     if (additionalBlocks.length > 0) {
         message += ` ${additionalBlocks.join(', ')}.`;
     } else {
-        message += ' незначителни количества от други макронутриенти.';
+        message += ` ${t('analysis.negligible')}`;
     }
     
     analysisText.innerHTML = message;
