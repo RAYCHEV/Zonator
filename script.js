@@ -38,7 +38,8 @@ const translations = {
         'nutrient.protein': 'protein',
         'nutrient.carbs': 'carbohydrate',
         'nutrient.fat': 'fat',
-        'kofi.text': 'Message Us'
+        'kofi.text': 'Support Us',
+        'support.text': 'Please support us to develop the app for iOS and Android'
     },
     bg: {
         title: 'Zone Diet Block Calculator',
@@ -76,7 +77,8 @@ const translations = {
         'nutrient.protein': 'протеинов',
         'nutrient.carbs': 'въглехидратен',
         'nutrient.fat': 'мазнинен',
-        'kofi.text': 'Пиши ни'
+        'kofi.text': 'Подкрепи ни',
+        'support.text': 'Моля, подкрепи ни, за да развием приложението за iOS и Android'
     }
 };
 
@@ -126,6 +128,20 @@ function t(key) {
     return translations[currentLanguage][key] || key;
 }
 
+// Initialize Ko-fi widget
+function initKofiWidget() {
+    if (window.kofiWidgetOverlay) {
+        kofiWidgetOverlay.draw('thexcoder', {
+            type: 'floating-chat',
+            'floating-chat.donateButton.text': t('kofi.text'),
+            'floating-chat.donateButton.background-color': '#00b9fe',
+            'floating-chat.donateButton.text-color': '#fff'
+        });
+        return true;
+    }
+    return false;
+}
+
 // Update page text based on current language
 function updatePageText() {
     // Update all elements with data-i18n attribute
@@ -138,14 +154,7 @@ function updatePageText() {
     document.documentElement.lang = currentLanguage;
     
     // Update Ko-fi widget text
-    if (window.kofiWidgetOverlay) {
-        kofiWidgetOverlay.draw('thexcoder', {
-            'type': 'floating-chat',
-            'floating-chat.donateButton.text': t('kofi.text'),
-            'floating-chat.donateButton.background-color': '#00b9fe',
-            'floating-chat.donateButton.text-color': '#fff'
-        });
-    }
+    initKofiWidget();
     
     // Re-render results if they exist
     if (currentResult) {
@@ -195,6 +204,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize language
     const detectedLanguage = detectLanguage();
     setLanguage(detectedLanguage);
+    
+    // Initialize Ko-fi widget (retry if script hasn't loaded yet)
+    function tryInitKofi() {
+        if (!initKofiWidget()) {
+            setTimeout(tryInitKofi, 100);
+        }
+    }
+    tryInitKofi();
     
     // Add language button event listeners
     document.querySelectorAll('.lang-btn').forEach(btn => {

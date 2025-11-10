@@ -474,3 +474,31 @@ body {
     font-weight: 600;
     color: inherit;
 }
+
+/* Support section */
+.support-section {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.support-text {
+    color: #6b7280;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.support-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #00b9fe;
+    flex-shrink: 0;
+}
