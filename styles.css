@@ -11,6 +11,8 @@ body {
     color: #374151;
     background-color: #f9fafb;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -57,6 +59,8 @@ body {
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .lang-btn:hover {
@@ -118,6 +122,14 @@ body {
     font-size: 1rem;
     transition: all 0.2s;
     background: white;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+}
+
+.form-group input::-webkit-outer-spin-button,
+.form-group input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .form-group input:focus {
@@ -137,6 +149,8 @@ body {
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .calculate-btn:hover {
@@ -346,23 +360,139 @@ body {
 /* Responsive design */
 @media (max-width: 640px) {
     .container {
-        padding: 1rem 0.5rem;
+        padding: 1rem 0.75rem;
+    }
+    
+    .header {
+        margin-bottom: 1.5rem;
     }
     
     .header h1 {
         font-size: 1.5rem;
+        padding-right: 4rem; /* Space for language toggle */
     }
     
-    .results-grid {
-        grid-template-columns: 1fr;
+    .subtitle {
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
+    }
+    
+    .language-toggle {
+        top: -0.25rem;
+        right: 0;
+    }
+    
+    .lang-btn {
+        padding: 0.35rem 0.65rem;
+        font-size: 0.8rem;
+    }
+    
+    .support-section {
+        margin-bottom: 1.25rem;
+        padding: 0.875rem 1rem;
+    }
+    
+    .support-text {
+        font-size: 0.875rem;
+        gap: 0.4rem;
+        line-height: 1.5;
+    }
+    
+    .support-icon {
+        width: 1.1rem;
+        height: 1.1rem;
+    }
+    
+    .calculator-card {
+        padding: 1.25rem;
+    }
+    
+    .form-group label {
+        font-size: 0.8rem;
+    }
+    
+    .form-group input {
+        padding: 0.65rem;
+        font-size: 0.95rem;
+    }
+    
+    .calculate-btn {
+        padding: 0.875rem 1.25rem;
+        font-size: 0.95rem;
+    }
+    
+    .results-section {
+        padding-top: 1.25rem;
+        margin-top: 1.25rem;
+    }
+    
+    .dominant-indicator {
+        padding: 0.875rem;
+        margin-bottom: 1.25rem;
+        font-size: 0.9rem;
+    }
+    
+    .analysis-section {
+        padding: 0.875rem;
+        margin-bottom: 1.25rem;
+        font-size: 0.9rem;
+    }
+    
+    .interactive-calculator {
+        padding: 0.875rem;
     }
     
     .interactive-header {
         font-size: 0.8rem;
+        margin-bottom: 0.875rem;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+    
+    .grams-input {
+        width: 3.5rem;
+        height: 1.65rem;
+        font-size: 0.8rem;
     }
     
     .blocks-display {
-        gap: 0.75rem;
+        gap: 0.5rem;
+    }
+    
+    .block-value {
+        font-size: 1rem;
+    }
+    
+    .block-label {
+        font-size: 0.7rem;
+    }
+    
+    .block-charts {
+        padding: 1.25rem;
+        margin-top: 1.25rem;
+    }
+    
+    .block-charts h3 {
+        font-size: 1rem;
+        margin-bottom: 0.875rem;
+    }
+    
+    .chart-label {
+        font-size: 0.85rem;
+        min-width: 50px;
+    }
+    
+    .chart-percentage {
+        font-size: 0.85rem;
+        min-width: 35px;
+    }
+    
+    .compact-bar-container {
+        height: 18px;
+    }
+    
+    .results-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -478,8 +608,8 @@ body {
 /* Support section */
 .support-section {
     text-align: center;
-    margin-top: 2rem;
-    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.5rem;
     background: white;
     border-radius: 0.5rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -494,6 +624,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .support-icon {
