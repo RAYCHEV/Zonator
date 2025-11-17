@@ -191,17 +191,54 @@ function t(key) {
 }
 
 // Initialize Ko-fi widget
+let kofiWidgetInitialized = false;
+
 function initKofiWidget() {
     if (window.kofiWidgetOverlay) {
-        kofiWidgetOverlay.draw('thexcoder', {
-            type: 'floating-chat',
-            'floating-chat.donateButton.text': t('kofi.text'),
-            'floating-chat.donateButton.background-color': '#00b9fe',
-            'floating-chat.donateButton.text-color': '#fff'
-        });
-        return true;
+        try {
+            kofiWidgetOverlay.draw('thexcoder', {
+                type: 'floating-chat',
+                'floating-chat.donateButton.text': t('kofi.text'),
+                'floating-chat.donateButton.background-color': '#00b9fe',
+                'floating-chat.donateButton.text-color': '#fff'
+            });
+            kofiWidgetInitialized = true;
+            return true;
+        } catch (e) {
+            console.warn('Ko-fi widget initialization error:', e);
+            return false;
+        }
     }
     return false;
+}
+
+// Watch for kofiWidgetOverlay to become available
+function watchForKofiWidget() {
+    if (window.kofiWidgetOverlay) {
+        initKofiWidget();
+        return;
+    }
+    
+    // Use Object.defineProperty to watch for kofiWidgetOverlay
+    let checkInterval = setInterval(function() {
+        if (window.kofiWidgetOverlay) {
+            clearInterval(checkInterval);
+            initKofiWidget();
+        }
+    }, 50);
+    
+    // Stop checking after 10 seconds
+    setTimeout(function() {
+        clearInterval(checkInterval);
+    }, 10000);
+}
+
+// Force reinitialize Ko-fi widget (useful when language changes)
+function reinitKofiWidget() {
+    if (window.kofiWidgetOverlay && kofiWidgetInitialized) {
+        // Update the widget text by reinitializing
+        initKofiWidget();
+    }
 }
 
 // Update page text based on current language
@@ -230,9 +267,7 @@ function updatePageText() {
     }
     
     // Update Ko-fi widget text (only if widget exists)
-    if (typeof initKofiWidget === 'function') {
-        initKofiWidget();
-    }
+    reinitKofiWidget();
     
     // Re-render results if they exist
     if (currentResult) {
@@ -285,12 +320,27 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize Ko-fi widget (retry if script hasn't loaded yet) - only on main page
     if (form) {
-        function tryInitKofi() {
-            if (!initKofiWidget()) {
-                setTimeout(tryInitKofi, 100);
-            }
+        // Try immediately
+        if (!initKofiWidget()) {
+            // Start watching for the widget to become available
+            watchForKofiWidget();
         }
-        tryInitKofi();
+        
+        // Also try when window fully loads (all scripts should be loaded by then)
+        window.addEventListener('load', function() {
+            if (!kofiWidgetInitialized) {
+                initKofiWidget();
+            }
+        });
+        
+        // Fallback: try periodically for a short time
+        let fallbackAttempts = 0;
+        const fallbackInterval = setInterval(function() {
+            if (initKofiWidget() || fallbackAttempts >= 20) {
+                clearInterval(fallbackInterval);
+            }
+            fallbackAttempts++;
+        }, 200);
     }
     
     // Add language button event listeners
