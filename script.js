@@ -39,7 +39,38 @@ const translations = {
         'nutrient.carbs': 'carbohydrate',
         'nutrient.fat': 'fat',
         'kofi.text': 'Support Us',
-        'support.text': 'Please support us to develop the app for iOS and Android'
+        'support.text': 'Please support us to develop the app for iOS and Android',
+        'button.faq': 'FAQ',
+        'button.calculator': 'Calculator',
+        'faq.title': 'FAQ - Zone Diet Block Calculator',
+        'faq.subtitle': 'Frequently asked questions about Zone Diet blocks and the calculator',
+        'faq.backToCalculator': '← Back to calculator',
+        'faq.q1.question': 'What is Zone Diet?',
+        'faq.q1.answer': 'Zone Diet is a nutritional approach that balances proteins, carbohydrates, and fats in a 40:30:30 ratio. The system uses "blocks" as a unit of measurement to control food intake.',
+        'faq.q2.question': 'What is one Zone block?',
+        'faq.q2.answer': 'One Zone block contains:<ul><li>7 grams of protein</li><li>9 grams of carbohydrates (net, after subtracting fiber)</li><li>1.5 grams of fat (when consumed with protein) or 3 grams of fat (when consumed alone)</li></ul>',
+        'faq.q3.question': 'How do I use the calculator?',
+        'faq.q3.answer': 'Enter the nutritional values from the product label (per 100g):<ul><li>Fat (g/100g)</li><li>Carbohydrates (g/100g)</li><li>Fiber (g/100g)</li><li>Protein (g/100g)</li></ul>The calculator will automatically calculate the Zone blocks and display the results.',
+        'faq.q4.question': 'Why are fibers subtracted from carbohydrates?',
+        'faq.q4.answer': 'Fiber is not digested by the body as energy and does not raise blood sugar. Therefore, Zone Diet uses "net carbohydrates" - total carbohydrates minus fiber.',
+        'faq.q5.question': 'What does "dominant source" mean?',
+        'faq.q5.answer': 'The dominant source is the macronutrient that requires the least amount of product to get one block. This helps you understand what type of food the product is - primarily a protein, carbohydrate, or fat source.',
+        'faq.q6.question': 'Can I use the calculator for different product amounts?',
+        'faq.q6.answer': 'Yes! After entering the nutritional values, you can change the product amount in grams in the interactive calculator to see how many blocks you get for that specific amount.',
+        'faq.q7.question': 'How many blocks should I consume per day?',
+        'faq.q7.answer': 'The number of blocks depends on your gender, weight, height, activity level, and goals. Typically, women consume 11-13 blocks per day, and men consume 14-16 blocks. For accurate recommendations, consult a dietitian or Zone Diet specialist.',
+        'faq.q8.question': 'Why does the calculator show that a product is "fat" when I think it\'s a carbohydrate?',
+        'faq.q8.answer': 'Because the calculator calculates by blocks, not by grams:<ul><li>1 protein block = 7 g</li><li>1 carb block = 9 g</li><li>1 fat block = 3 g</li></ul>Then we compare which macronutrient has the most blocks, not the most grams.',
+        'faq.q9.question': 'But Barry Sears\' book says something different. Which is correct?',
+        'faq.q9.answer': 'This is where confusion often arises. Barry Sears sometimes classifies foods differently, without strictly following his own block formulas. Years change definitions, give new examples, and so on.<br><br>For example:<ul><li>In the book, the egg is a protein product</li><li>But if we calculate it by the formula, the dominant macronutrient is fat</li></ul>So there are two approaches:<br>👉 Follow the book<br>or<br>👉 Follow the formula<br><br>Both are valid — the choice is personal.',
+        'faq.q10.question': 'So why is this calculator useful?',
+        'faq.q10.answer': 'Because the calculator:<ul><li>calculates the real blocks</li><li>shows percentage balance between macronutrients</li><li>visualizes with scales which macronutrient dominates</li><li>gives a clearer picture than the tables in books</li></ul>In other words, the calculator shows you the true proportions and allows you to decide for yourself whether to follow the book or the formula.',
+        'faq.q11.question': 'Why do I see percentages below the results?',
+        'faq.q11.answer': 'They show the exact ratio between protein, carbohydrates, and fats in the product. This helps you understand:<ul><li>how "pure" the product is</li><li>how well balanced it is relative to the Zone</li><li>whether it makes sense to use it in your recipes as protein/carb/fat</li></ul>',
+        'faq.q12.question': 'What if the product is balanced and there is no clearly dominant macronutrient?',
+        'faq.q12.answer': 'Then the scales will show you — and you can use it more flexibly, because there is no strong bias towards any of the three macronutrients.',
+        'faq.q13.question': 'What exactly should I look at?',
+        'faq.q13.answer': 'The most important:<ul><li>the number of blocks</li><li>the percentage chart</li></ul>'
     },
     bg: {
         title: 'Zone Diet Block Calculator',
@@ -78,7 +109,38 @@ const translations = {
         'nutrient.carbs': 'въглехидратен',
         'nutrient.fat': 'мазнинен',
         'kofi.text': 'Подкрепи ни',
-        'support.text': 'Моля, подкрепи ни, за да развием приложението за iOS и Android'
+        'support.text': 'Моля, подкрепи ни, за да развием приложението за iOS и Android',
+        'button.faq': 'FAQ',
+        'button.calculator': 'Калкулатор',
+        'faq.title': 'FAQ - Zone Diet Block Calculator',
+        'faq.subtitle': 'Често задавани въпроси за Zone Diet блоковете и калкулатора',
+        'faq.backToCalculator': '← Назад към калкулатора',
+        'faq.q1.question': 'Какво е Zone Diet?',
+        'faq.q1.answer': 'Zone Diet е хранителен режим, който балансира протеините, въглехидратите и мазнините в съотношение 40:30:30. Системата използва "блокове" като мерна единица за контрол на хранителния прием.',
+        'faq.q2.question': 'Какво представлява един Zone блок?',
+        'faq.q2.answer': 'Един Zone блок съдържа:<ul><li>7 грама протеин</li><li>9 грама въглехидрати (нетни, след изваждане на фибрите)</li><li>1.5 грама мазнини (когато се консумира с протеин) или 3 грама мазнини (когато се консумира самостоятелно)</li></ul>',
+        'faq.q3.question': 'Как да използвам калкулатора?',
+        'faq.q3.answer': 'Въведете хранителните стойности от етикета на продукта (на 100g):<ul><li>Мазнини (g/100g)</li><li>Въглехидрати (g/100g)</li><li>Фибри (g/100g)</li><li>Протеини (g/100g)</li></ul>Калкулаторът автоматично ще изчисли Zone блоковете и ще покаже резултатите.',
+        'faq.q4.question': 'Защо се изваждат фибрите от въглехидратите?',
+        'faq.q4.answer': 'Фибрите не се усвояват от тялото като енергия и не повишават кръвната захар. Затова в Zone Diet се използват "нетни въглехидрати" - общите въглехидрати минус фибрите.',
+        'faq.q5.question': 'Какво означава "доминиращ източник"?',
+        'faq.q5.answer': 'Доминиращият източник е макронутриентът, който изисква най-малко количество продукт за да се получи един блок. Това ви помага да разберете какъв тип храна е продуктът - основно протеинов, въглехидратен или мазнинен източник.',
+        'faq.q6.question': 'Мога ли да използвам калкулатора за различни количества продукт?',
+        'faq.q6.answer': 'Да! След като въведете хранителните стойности, можете да променяте количеството продукт в грамове в интерактивния калкулатор, за да видите колко блокове получавате за конкретното количество.',
+        'faq.q7.question': 'Колко блокове трябва да консумирам на ден?',
+        'faq.q7.answer': 'Броят блокове зависи от вашия пол, тегло, височина, ниво на активност и цели. Обикновено жените консумират 11-13 блокове на ден, а мъжете 14-16 блокове. За точни препоръки се консултирайте с диетолог или Zone Diet специалист.',
+        'faq.q8.question': 'Защо калкулаторът показва, че даден продукт е "мазнина", когато аз мисля, че е въглехидрат?',
+        'faq.q8.answer': 'Защото калкулаторът изчислява не по грамове, а по блокове:<ul><li>1 блок протеин = 7 g</li><li>1 блок въглехидрат = 9 g</li><li>1 блок мазнина = 3 g</li></ul>След това сравняваме кой макронутриент има най-много блокове, а не най-много грамаж.',
+        'faq.q9.question': 'Но в книгата на Барис Иърс пише друго. Кое е правилното?',
+        'faq.q9.answer': 'Точно тук често идва объркването. Барис Иърс понякога класифицира храни по различен начин, без да следва строго собствените си блок-формули. Годините обръщат дефиниции, дават нови примери и така нататък.<br><br>Например:<ul><li>В книгата яйцето е протеинов продукт</li><li>Но ако го пресметнем по формулата, доминиращият макронутриент е мазнина</li></ul>Затова има два подхода:<br>👉 Да следваш книгата<br>или<br>👉 Да следваш формулата<br><br>И и двете са валидни — изборът е личен.',
+        'faq.q10.question': 'И тогава защо е полезен този калкулатор?',
+        'faq.q10.answer': 'Защото калкулаторът:<ul><li>изчислява реалните блокове</li><li>показва процентен баланс между макронутриентите</li><li>визуализира с скали кой макронутриент доминира</li><li>дава по-ясна картина, отколкото таблиците в книгите</li></ul>С други думи, калкулаторът ти показва истинските пропорции и ти позволява сам да решиш дали се придържаш към книгата или към формулата.',
+        'faq.q11.question': 'Защо виждам проценти под резултатите?',
+        'faq.q11.answer': 'Те показват точното съотношение между протеин, въглехидрати и мазнини в продукта. Това помага да разбереш:<ul><li>колко „чист" е продуктът</li><li>колко добре балансиран е спрямо Зоната</li><li>дали има смисъл да го използваш в рецептите си като протеин/въглехидрат/мазнина</li></ul>',
+        'faq.q12.question': 'Ами ако продуктът е балансиран и няма ясно доминиращ макронутриент?',
+        'faq.q12.answer': 'Тогава скалите ще ти го покажат — и можеш да го използваш по-гъвкаво, защото няма силен превес към някой от трите макронутриента.',
+        'faq.q13.question': 'Какво точно да гледам?',
+        'faq.q13.answer': 'Най-важното:<ul><li>броят блокове</li><li>процентната графика</li></ul>'
     }
 };
 
@@ -147,14 +209,30 @@ function updatePageText() {
     // Update all elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
-        element.textContent = t(key);
+        const translation = t(key);
+        const isHtml = element.hasAttribute('data-i18n-html');
+        
+        // Check if translation contains HTML tags or if explicitly marked as HTML
+        if (isHtml || translation.includes('<ul>') || translation.includes('<li>') || translation.includes('<p>') || translation.includes('<br>')) {
+            element.innerHTML = translation;
+        } else {
+            element.textContent = translation;
+        }
     });
     
     // Update HTML lang attribute
     document.documentElement.lang = currentLanguage;
     
-    // Update Ko-fi widget text
-    initKofiWidget();
+    // Update page title if it has data-i18n
+    const titleElement = document.querySelector('title[data-i18n]');
+    if (titleElement) {
+        document.title = t(titleElement.getAttribute('data-i18n'));
+    }
+    
+    // Update Ko-fi widget text (only if widget exists)
+    if (typeof initKofiWidget === 'function') {
+        initKofiWidget();
+    }
     
     // Re-render results if they exist
     if (currentResult) {
@@ -205,13 +283,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const detectedLanguage = detectLanguage();
     setLanguage(detectedLanguage);
     
-    // Initialize Ko-fi widget (retry if script hasn't loaded yet)
-    function tryInitKofi() {
-        if (!initKofiWidget()) {
-            setTimeout(tryInitKofi, 100);
+    // Initialize Ko-fi widget (retry if script hasn't loaded yet) - only on main page
+    if (form) {
+        function tryInitKofi() {
+            if (!initKofiWidget()) {
+                setTimeout(tryInitKofi, 100);
+            }
         }
+        tryInitKofi();
     }
-    tryInitKofi();
     
     // Add language button event listeners
     document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -220,16 +300,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Add form submit event listener
-    form.addEventListener('submit', handleFormSubmit);
+    // Add form submit event listener (only if form exists)
+    if (form) {
+        form.addEventListener('submit', handleFormSubmit);
+    }
     
-    // Add input event listeners for real-time calculation
-    [proteinInput, carbsInput, fibersInput, fatInput].forEach(input => {
-        input.addEventListener('input', debounce(calculateIfValid, 300));
-    });
+    // Add input event listeners for real-time calculation (only if inputs exist)
+    if (proteinInput && carbsInput && fibersInput && fatInput) {
+        [proteinInput, carbsInput, fibersInput, fatInput].forEach(input => {
+            input.addEventListener('input', debounce(calculateIfValid, 300));
+        });
+    }
     
-    // Add event listener for interactive calculator
-    productGramsInput.addEventListener('input', updateInteractiveBlocks);
+    // Add event listener for interactive calculator (only if input exists)
+    if (productGramsInput) {
+        productGramsInput.addEventListener('input', updateInteractiveBlocks);
+    }
 });
 
 // Handle form submission
